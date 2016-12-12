@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SCSS Demo</title>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body lang="en">
+    <header>
+        <h1>Getting Started with SCSS</h1>
+        <nav>
+            <ul>
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#">Mixins</a></li>
+                <li><a href="#">Nesting</a></li>
+                <li><a href="#">Extends</a></li>
+                <li><a href="#">Structuring Files</a></li>
+                <li><a href="#">Operators and Additional Features</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article>
+            <h2 id="variables">Variables</h2>
+            <p>Variables allow us to store values that we can then use throughout our code. In sass, we often treat them like constants. They are identified by the <code>$</code> prefix.</p>
+            <pre>
+  <code>
+  $primary-color: red;
+
+  p {
+    color: $primary-color;
+  }
+  </code>
+	    </pre>
+        </article>
+
+        <article>
+            <h2 id="mixins">Mixins</h2>
+            <p>Mixins can be used to return repeatable portions of code. Like functions, they can also accept arguements. For example:</p>
+            <pre>
+	<code>
+  // Mixin for individually setting border radius values
+  @mixin brs($topLeft, $topRight, $bottomRight, $buttonLeft) {
+    border-top-left-radius: $topLeft;
+    border-top-right-radius: $topRight;
+    border-bottom-left-radius: $bottomLeft;
+    border-bottom-right-radius: $bottomRight;
+  }
+
+  button {
+    @include brs(0,0,4px,4px)
+  }
+	</code>
+			</pre>
+            <p>Compiles into:</p>
+            <pre>
+	<code>
+  button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+	</code>
+			</pre>
+        </article>
+
+        <article>
+            <h2 id="nesting">Nesting</h2>
+            <p>Variables allow us to store values that we can then use throughout our code. In sass, we often treat them like constants. They are identified by the <code>$</code> prefix.</p>
+            <pre>
+	<code>
+  ul {
+    list-style:none;
+    li {
+      color: red;
+    }
+  }
+	</code>
+			</pre>
+            <p>is compiled to:</p>
+            <pre><code>
+  ul { list-style: none; }
+  ul li { color: red; }
+			</code></pre>
+            <p>This is great, but what if we need to reference the parent of the nested element? We can do this by using the <code>&amp;</code> (ampersand).</p>
+            <pre><code>
+  a {
+    text-decoration:none;
+    color: blue;
+    &:hover {
+      color: red;
+    }
+  }
+			</code></pre>
+            <p>this compiles to:</p>
+            <pre><code>
+  a {
+    text-decoration: none;
+    color: blue;
+  }
+  a:hover {
+    color: red;
+  }
+			</code></pre>
+        </article>
+
+        <article>
+            <h2 id="extends">Extends</h2>
+            <p>Sass allows us the option of extending existing styles with styles from other areas of our project. We can do extend classes/ids, complex selectors, and placeholders. You can have multiple extends and chain extends as well.</p>
+            <pre>
+	<code>
+  // complex selector
+  .hoverLink {
+    @extend a:hover;
+  }
+
+  // class selector
+  .alert {
+    color: red;
+  }
+  .alert-danger {
+    font-weight: bold;
+    @extend .alert;
+  }
+
+  // placeholder selectors "%" don't show up
+  // in our compiled code unless they are used to extend existing selectors.
+  %center-element {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section {
+    margin-top: 2em;
+    @extend %center-element;
+  }
+
+	</code>
+			</pre>
+        </article>
+
+        <article>
+            <h2 id="structure">Structuring Files</h2>
+            <p>Sass allows us the freedom to modularize our code into smaller, easy to work with portions. There are many options, but they all take advantage of <code>@import</code> to pull all the parts together into one core file.</p>
+            <p>We name our partial files starting with an underscore, such as <code>_variables.scss</code>. This stops the compiler from creating a <code>variables.css</code> file, but still allows us to import it into our main file. Here's an example structure:</p>
+            <pre>
+	<code>
+  sass/
+  |
+  |- util/ # Utilities and functions that all sections may use.
+  |  |- _variables.scss     # Sass Variables
+  |  |- _mixins.scss        # Sass Mixins
+  |  |- _placeholders.scss  # Sass Placeholders
+  |- base/
+  |  |- _reset.scss         # Your CSS reset file
+  |  |- _typography.scss    # Your base type styles
+  |  ...
+  |- components/            # Components used in your project
+  |  |- _buttons.scss
+  |  |- _form-controls.scss
+  |  ...
+  |- layout/                # Layout specific styles
+  |  |- _navigation.scss
+  |  |- _footer.scss
+  |  |- _grid.scss
+  |  |- _sidebar.scss
+  |  ...
+  |- pages/                 # Page specific styles
+  |  |- _home.scss
+  |  |- _about.scss
+  |
+  |- main.scss
+	</code>
+			</pre>
+      <p>We then import each section into our main.scss file.</p>
+<pre>
+<code>
+  // We import each file in the order it needs to be used,
+  // generally starting with variables and mixins as they are required
+  // by our other styles.
+
+  @import 'utils/variables';
+  @import 'utils/mixins';
+  ...
+
+</code>
+</pre>
+<p>This allows us to compile just the end <code>main.scss</code> file. Your overall structure will be dependent on the scope of each project.</p>
+        </article>
+
+    <article>
+        <h2 id="other">Operators and Additional features</h2>
+        <p>Sass also allows for the use of common math operators, loops, functions, arrays, boolean values, and so much more. Check the <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html" title="Sass Language Official Documentation">official documentation</a> for more advanced functionality.</p>
+    </article>
+</section>
+    <section>
+        <button>Awesome!</button>
+    </section>
+
+</body>
+
+</html>
