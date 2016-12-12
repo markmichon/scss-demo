@@ -15,7 +15,6 @@ $neutral-color: #f7f7f7;
   border-bottom-right-radius: $bottomRight;
 }
 
-
 html {
   background-color: $neutral-color;
   font-family: $font-stack;
@@ -42,20 +41,25 @@ h2 {
 ul {
   list-style:none;
   text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 0 .5em;
+  }
+
 }
 
-li {
-  display: inline-block;
-  margin: 0 .5em;
-}
+
 
 a {
   text-decoration: none;
   color: $primary-color;
-}
-  a:hover {
+
+  &:hover {
     color: $secondary-color;
   }
+
+}
 
 pre {
   background-color: #efefef;
@@ -75,9 +79,9 @@ button {
   margin:0 auto;
   transition: border-radius .5s, background-color .5s;
   @include brs(0,1em,1em,0);
-}
 
-button:hover {
-  background-color: $secondary-color;
-  @include brs(1em,0,0,1em);
+  &:hover {
+    background-color: $secondary-color;
+    @include brs(1em,0,0,1em);
+  }
 }
