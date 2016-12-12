@@ -1,0 +1,41 @@
+
+html {
+  background-color: $neutral-color;
+  font-family: $font-stack;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $copy-color;
+  height: 100%;
+}
+
+body {
+  width: 80%;
+  max-width: 1100px;
+  @extend %center-element;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+
+  &:hover {
+    color: $secondary-color;
+  }
+
+}
+
+pre {
+  background-color: #efefef;
+  border: 1px solid #ccc;
+}
+section {
+  margin-bottom: 3em;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 0;
+}

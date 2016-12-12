@@ -1,3 +1,7 @@
+body, button {
+  margin-left: auto;
+  margin-right: auto; }
+
 html {
   background-color: #f7f7f7;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -8,21 +12,7 @@ html {
 
 body {
   width: 80%;
-  max-width: 1100px;
-  margin: 0 auto; }
-
-h1 {
-  text-align: center; }
-
-h2 {
-  margin-bottom: 0; }
-
-ul {
-  list-style: none;
-  text-align: center; }
-  ul li {
-    display: inline-block;
-    margin: 0 .5em; }
+  max-width: 1100px; }
 
 a {
   text-decoration: none;
@@ -37,6 +27,19 @@ pre {
 section {
   margin-bottom: 3em; }
 
+h1 {
+  text-align: center; }
+
+h2 {
+  margin-bottom: 0; }
+
+ul {
+  list-style: none;
+  text-align: center; }
+  ul li {
+    display: inline-block;
+    margin: 0 .5em; }
+
 button {
   padding: .5em 1em;
   font-size: 1.5em;
@@ -44,7 +47,6 @@ button {
   color: #fff;
   border: none;
   display: block;
-  margin: 0 auto;
   transition: border-radius .5s, background-color .5s;
   border-top-left-radius: 0;
   border-top-right-radius: 1em;
