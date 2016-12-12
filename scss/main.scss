@@ -6,6 +6,15 @@ $font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $copy-color: #333;
 $neutral-color: #f7f7f7;
 
+// Mixins
+
+@mixin brs($topLeft, $topRight, $bottomLeft, $bottomRight) {
+  border-top-left-radius: $topLeft;
+  border-top-right-radius: $topRight;
+  border-bottom-left-radius: $bottomLeft;
+  border-bottom-right-radius: $bottomRight;
+}
+
 
 html {
   background-color: $neutral-color;
@@ -65,16 +74,10 @@ button {
   display: block;
   margin:0 auto;
   transition: border-radius .5s, background-color .5s;
-  border-top-left-radius: 0;
-  border-top-right-radius: 1em;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 0;
+  @include brs(0,1em,1em,0);
 }
 
 button:hover {
   background-color: $secondary-color;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 1em;
+  @include brs(1em,0,0,1em);
 }
