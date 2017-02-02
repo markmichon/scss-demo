@@ -1,5 +1,5 @@
 html {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -20,14 +20,15 @@ h2 {
 ul {
   list-style: none;
   text-align: center; }
-
-li {
-  display: inline-block;
-  margin: 0 .5em; }
+  ul li {
+    display: inline-block;
+    margin: 0 .5em; }
 
 a {
   text-decoration: none;
   color: #4990E2; }
+  a:hover {
+    color: #F6A623; }
 
 pre {
   background-color: #efefef;
@@ -49,12 +50,11 @@ button {
   border-top-right-radius: 1em;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 0; }
-
-button:hover {
-  background-color: #F6A623;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 1em; }
+  button:hover {
+    background-color: #F6A623;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 1em; }
 
 /*# sourceMappingURL=main.css.map */

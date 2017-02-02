@@ -1,9 +1,26 @@
+// Variables
+
+$primary-color: #4990E2;
+$secondary-color: #F6A623;
+$font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$copy-color: #333;
+$neutral-color: #f7f7f7;
+
+// Mixins
+
+@mixin brs($topLeft, $topRight, $bottomLeft, $bottomRight) {
+  border-top-left-radius: $topLeft;
+  border-top-right-radius: $topRight;
+  border-bottom-left-radius: $bottomLeft;
+  border-bottom-right-radius: $bottomRight;
+}
+
 html {
-  background-color: #F7F7F7;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: $neutral-color;
+  font-family: $font-stack;
   font-size: 16px;
   line-height: 1.5;
-  color: #333;
+  color: $copy-color;
   height: 100%;
 }
 
@@ -24,16 +41,24 @@ h2 {
 ul {
   list-style:none;
   text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 0 .5em;
+  }
+
 }
 
-li {
-  display: inline-block;
-  margin: 0 .5em;
-}
+
 
 a {
   text-decoration: none;
-  color: #4990E2
+  color: $primary-color;
+
+  &:hover {
+    color: $secondary-color;
+  }
+
 }
 
 pre {
@@ -47,22 +72,16 @@ section {
 button {
   padding: .5em 1em;
   font-size: 1.5em;
-  background-color: #4990E2;
+  background-color: $primary-color;
   color: #fff;
   border:none;
   display: block;
   margin:0 auto;
   transition: border-radius .5s, background-color .5s;
-  border-top-left-radius: 0;
-  border-top-right-radius: 1em;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 0;
-}
+  @include brs(0,1em,1em,0);
 
-button:hover {
-  background-color: #F6A623;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 1em;
+  &:hover {
+    background-color: $secondary-color;
+    @include brs(1em,0,0,1em);
+  }
 }
